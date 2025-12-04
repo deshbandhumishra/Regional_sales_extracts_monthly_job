@@ -1,0 +1,40 @@
+resources:
+  jobs:
+    wf_regional_sales_extract:
+      name: wf_regional_sales_extract
+      tasks:
+        - task_key: Dealer_Extract
+          notebook_task:
+            notebook_path: /Workspace/Extract/Sales_Extract
+            source: WORKSPACE
+          environment_key: Default
+      queue:
+        enabled: true
+      parameters:
+        - name: country_code
+          default: IN
+        - name: dir_tmp
+          default: /Volumes/alldatatech_project/sales_reporting/sales/reporting/
+        - name: email_cc
+          default: bigdataworkshop.in@gmail.com
+        - name: email_from
+          default: sales@alldatatech.ai
+        - name: email_to
+          default: deshbandhu.mishra@gmail.com
+        - name: env
+          default: dev
+        - name: from_date
+          default: 2025-10-01
+        - name: product_sku
+          default: SERVICE
+        - name: region_name
+          default: West
+        - name: to_date
+          default: 2026-01-31
+        - name: workflow_name
+          default: wf_regional_sales_extract
+      environments:
+        - environment_key: Default
+          spec:
+            environment_version: "2"
+      performance_target: PERFORMANCE_OPTIMIZED
